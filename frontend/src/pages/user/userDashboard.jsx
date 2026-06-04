@@ -1,24 +1,34 @@
 import DashboardLayout from "../../components/common/DashboardLayout";
 
-import AnalyticsCards from "../../components/cards/AnalyticsCards";
-import MonitoringSystem from "../../components/cards/MonitoringSystem";
-import AlertEngine from "../../components/cards/AlertEngine";
-
 const UserDashboard = () => {
+
+  const user = JSON.parse(
+    localStorage.getItem("user")
+  );
 
   return (
 
     <DashboardLayout>
 
-      <h1 className="text-5xl font-bold mb-10 text-red-500">
+      <h1 className="text-4xl font-bold text-red-500">
         USER SAFETY DASHBOARD
       </h1>
 
-      <AnalyticsCards />
+      <div className="mt-6 bg-slate-900 p-6 rounded-2xl">
 
-      <MonitoringSystem />
+        <h2 className="text-2xl font-semibold text-white">
+          Welcome {user?.full_name}
+        </h2>
 
-      <AlertEngine />
+        <p className="text-gray-400 mt-2">
+          Employee ID: {user?.employee_id}
+        </p>
+
+        <p className="text-gray-400">
+          Department: {user?.department}
+        </p>
+
+      </div>
 
     </DashboardLayout>
 

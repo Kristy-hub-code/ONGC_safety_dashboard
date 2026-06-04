@@ -1,4 +1,20 @@
+import { useNavigate } from "react-router-dom";
+
 const Navbar = () => {
+
+  const navigate = useNavigate();
+
+  const user = JSON.parse(
+    localStorage.getItem("user")
+  );
+
+  const handleLogout = () => {
+
+    localStorage.removeItem("user");
+
+    navigate("/");
+
+  };
 
   return (
 
@@ -30,25 +46,24 @@ const Navbar = () => {
 
       {/* Right Side */}
 
-      <div className="hidden md:flex gap-8 items-center text-lg font-medium">
+      <div className="flex items-center gap-6">
 
-        <span className="hover:text-red-200 cursor-pointer transition">
-          Monitoring
-        </span>
+        <div className="text-right">
 
-        <span className="hover:text-red-200 cursor-pointer transition">
-          Safety
-        </span>
+          <p className="font-semibold">
+            {user?.full_name}
+          </p>
 
-        <span className="hover:text-red-200 cursor-pointer transition">
-          Analytics
-        </span>
+          <p className="text-sm text-red-100">
+            {user?.role?.toUpperCase()}
+          </p>
 
-        <span className="hover:text-red-200 cursor-pointer transition">
-          AI Detection
-        </span>
+        </div>
 
-        <button className="bg-black hover:bg-gray-900 px-5 py-2 rounded-xl transition">
+        <button
+          onClick={handleLogout}
+          className="bg-black hover:bg-gray-900 px-5 py-2 rounded-xl transition"
+        >
           Logout
         </button>
 
@@ -57,6 +72,7 @@ const Navbar = () => {
     </div>
 
   );
+
 };
 
 export default Navbar;

@@ -2,20 +2,21 @@ import Sidebar from "./Sidebar";
 import Navbar from "./Navbar";
 
 const DashboardLayout = ({ children }) => {
-
   return (
+    <div className="min-h-screen bg-slate-950 text-white">
 
-    <div className="flex bg-slate-950 text-white min-h-screen">
+      {/* Top Navbar */}
+      <Navbar />
 
-      <Sidebar />
+      <div className="flex">
 
-      <div className="flex-1">
+        {/* Sidebar */}
+        <Sidebar />
 
-        <Navbar />
-
-        <div className="p-8">
+        {/* Main Content */}
+        <main className="flex-1 p-6 overflow-auto">
           {children}
-        </div>
+        </main>
 
       </div>
 
