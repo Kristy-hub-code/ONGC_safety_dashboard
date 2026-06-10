@@ -10,6 +10,7 @@
 
 //   const navigate = useNavigate();
 
+
 //   const scrollToSection = (sectionId) => {
 //     document.getElementById(sectionId)?.scrollIntoView({
 //       behavior: "smooth",
@@ -180,8 +181,10 @@
 // };
 
 // export default LandingPage;
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import {
   FaUserShield,
   FaUsersCog,
@@ -191,28 +194,45 @@ import {
   FaExclamationTriangle,
   FaChartLine,
   FaShieldAlt,
+  FaGlobe,
+  FaMicrophone,
 } from "react-icons/fa";
 
 const LandingPage = () => {
   const navigate = useNavigate();
+  const { t, i18n } = useTranslation();
+  const speak = (text) => {
+
+  if (window.speechSynthesis.speaking) {
+    window.speechSynthesis.cancel();
+    return;
+  }
+
+  const msg = new SpeechSynthesisUtterance(text);
+  msg.lang = "en-IN";
+  msg.rate = 1;
+  msg.pitch = 1;
+
+  window.speechSynthesis.speak(msg);
+};
 
   const portals = [
     {
-      title: "EMPLOYEE PORTAL",
+      title: t("employeePortal"),
       icon: <FaUserShield size={40} />,
       description:
         "Access tasks, reports, shift schedules and safety information.",
       path: "/login/user",
     },
     {
-      title: "ADMIN PORTAL",
+      title: t("adminPortal"),
       icon: <FaUsersCog size={40} />,
       description:
         "Monitor workers, review reports and manage industrial operations.",
       path: "/login/admin",
     },
     {
-      title: "ADMINISTRATION",
+      title: t("administration"),
       icon: <FaBuilding size={40} />,
       description:
         "Project planning, shift allocation and workforce management.",
@@ -222,27 +242,27 @@ const LandingPage = () => {
 
   const modules = [
     {
-      title: "Helmet Detection",
+      title: t("helmetDetection"),
       icon: <FaHardHat />,
     },
     {
-      title: "Task Management",
+      title:  t("taskManagement"),
       icon: <FaClipboardList />,
     },
     {
-      title: "Incident Reporting",
+      title: t("incidentReporting"),
       icon: <FaExclamationTriangle />,
     },
     {
-      title: "Safety Analytics",
+      title:  t("safetyAnalytics"),
       icon: <FaChartLine />,
     },
     {
-      title: "PPE Compliance",
+      title: t("ppeCompliance"),
       icon: <FaShieldAlt />,
     },
     {
-      title: "Shift Management",
+      title: t("shiftManagement"),
       icon: <FaBuilding />,
     },
   ];
@@ -251,8 +271,8 @@ const LandingPage = () => {
     <div className="min-h-screen bg-slate-950 text-white">
       {/* Navbar */}
       <nav className="sticky top-0 z-50 bg-red-700 border-b border-red-900 shadow-lg">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-          <div className="flex items-center gap-4">
+      <div className="max-w-7xl mx-auto px-4 md:px-6 py-4 flex flex-col md:flex-row justify-between items-center gap-3">
+        <div className="flex flex-col md:flex-row items-center gap-4">
             <img
               src="/ongc-logo-01.png"
               alt="ONGC Logo"
@@ -260,37 +280,64 @@ const LandingPage = () => {
             />
 
             <div>
-              <h1 className="font-bold text-xl">
+              <h1 className="font-bold text-lg md:text-xl text-center md:text-left">
                 ONGC AI SAFETY PLATFORM
               </h1>
 
-              <p className="text-sm text-gray-400">
+              <p className="text-xs md:text-sm text-gray-400 text-center md:text-left">
                 Oil & Natural Gas Corporation
               </p>
             </div>
+            <div className="flex items-center gap-2">
+  <FaGlobe className="text-xl text-white" />
+
+  <select
+  value={i18n.language}
+  className="bg-white text-black px-2 py-1 rounded"
+  onChange={(e) => {
+    i18n.changeLanguage(e.target.value);
+    localStorage.setItem("language", e.target.value);
+  }}
+>
+  <option value="en">English</option>
+  <option value="hi">Hindi</option>
+  <option value="bn">Bengali</option>
+</select>
+   <button
+  onClick={() =>
+    speak(
+      "Welcome to ONGC AI Safety Platform. This dashboard provides real time workforce monitoring, safety analytics, incident reporting and industrial risk management."
+    )
+  }
+  className="bg-white text-black p-2 rounded"
+>
+  <FaMicrophone />
+</button>
+</div>
           </div>
         </div>
       </nav>
 
       {/* Hero */}
 <div className="text-center py-16">
-
+  <div className="max-w-4xl mx-auto px-4">
   <motion.h1
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 1 }}
     className="
-      text-4xl md:text-6xl
-      font-bold
-      tracking-wide
-      text-white
-    "
+  text-2xl
+  sm:text-3xl
+  md:text-5xl
+  lg:text-6xl
+  font-bold
+  tracking-wide
+  text-white
+"
   >
-    ONGC AI INDUSTRIAL
-    <br />
-    SAFETY PLATFORM
+    {t("platformTitle")}
   </motion.h1>
-
+</div>
 <motion.p
   animate={{
     backgroundPosition: [
@@ -323,9 +370,7 @@ const LandingPage = () => {
     text-transparent
   "
 >
-  Real-Time Workforce Monitoring, Risk Detection,
-  Task Management and Industrial Safety Analytics
-  for safer and smarter operations.
+ {t("platformDescription")}
 </motion.p>
 
 <motion.div
@@ -355,10 +400,10 @@ const LandingPage = () => {
       {/* Stats */}
       <section className="max-w-7xl mx-auto px-6 pb-20">
         <h2 className="text-3xl font-bold text-center text-red-500 mb-8">
-          LIVE INDUSTRIAL OVERVIEW
+         {t("liveOverview")}
         </h2>
 
-        <div className="grid md:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
           {[
             ["124", "Active Workers"],
             ["8", "Running Projects"],
@@ -384,7 +429,7 @@ const LandingPage = () => {
       {/* Portals */}
       <section className="max-w-7xl mx-auto px-6 pb-20">
         <h2 className="text-3xl font-bold text-center text-red-500 mb-8">
-          ACCESS PORTALS
+          {t("accessPortals")}
         </h2>
 
         <div className="grid md:grid-cols-3 gap-8">
@@ -420,7 +465,7 @@ const LandingPage = () => {
       {/* Modules */}
       <section className="max-w-7xl mx-auto px-6 pb-20">
         <h2 className="text-3xl font-bold text-center text-red-500 mb-8">
-          CORE MODULES
+          {t("coreModules")}
         </h2>
 
         <div className="grid md:grid-cols-3 gap-6">
