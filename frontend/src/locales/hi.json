@@ -1,0 +1,16 @@
+{
+  "platformTitle": "ONGC एआई औद्योगिक सुरक्षा मंच",
+  "platformDescription": "रियल-टाइम कार्यबल निगरानी, जोखिम पहचान, कार्य प्रबंधन और औद्योगिक सुरक्षा विश्लेषण।",
+  "liveOverview": "लाइव औद्योगिक अवलोकन",
+  "accessPortals": "एक्सेस पोर्टल",
+  "coreModules": "मुख्य मॉड्यूल",
+  "employeePortal": "कर्मचारी पोर्टल",
+  "adminPortal": "एडमिन पोर्टल",
+  "administration": "प्रशासन",
+  "helmetDetection": "हेलमेट पहचान",
+"taskManagement": "कार्य प्रबंधन",
+"incidentReporting": "घटना रिपोर्टिंग",
+"safetyAnalytics": "सुरक्षा विश्लेषण",
+"ppeCompliance": "पीपीई अनुपालन",
+"shiftManagement": "शिफ्ट प्रबंधन"
+}

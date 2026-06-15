@@ -1,0 +1,16 @@
+{
+  "platformTitle": "ONGC AI INDUSTRIAL SAFETY PLATFORM",
+  "platformDescription": "Real-Time Workforce Monitoring, Risk Detection, Task Management and Industrial Safety Analytics for safer and smarter operations.",
+  "liveOverview": "LIVE INDUSTRIAL OVERVIEW",
+  "accessPortals": "ACCESS PORTALS",
+  "coreModules": "CORE MODULES",
+  "employeePortal": "EMPLOYEE PORTAL",
+  "adminPortal": "ADMIN PORTAL",
+  "administration": "ADMINISTRATION",
+ "helmetDetection": "Helmet Detection",
+"taskManagement": "Task Management",
+"incidentReporting": "Incident Reporting",
+"safetyAnalytics": "Safety Analytics",
+"ppeCompliance": "PPE Compliance",
+"shiftManagement": "Shift Management"
+}

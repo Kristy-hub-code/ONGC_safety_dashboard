@@ -1,0 +1,16 @@
+{
+  "platformTitle": "ONGC এআই শিল্প সুরক্ষা প্ল্যাটফর্ম",
+  "platformDescription": "রিয়েল-টাইম কর্মী পর্যবেক্ষণ, ঝুঁকি সনাক্তকরণ, কাজ ব্যবস্থাপনা এবং শিল্প নিরাপত্তা বিশ্লেষণ।",
+  "liveOverview": "লাইভ শিল্প পর্যালোচনা",
+  "accessPortals": "অ্যাক্সেস পোর্টাল",
+  "coreModules": "মূল মডিউল",
+  "employeePortal": "কর্মচারী পোর্টাল",
+  "adminPortal": "অ্যাডমিন পোর্টাল",
+  "administration": "প্রশাসন",
+  "helmetDetection": "হেলমেট সনাক্তকরণ",
+"taskManagement": "কাজ ব্যবস্থাপনা",
+"incidentReporting": "ঘটনা রিপোর্টিং",
+"safetyAnalytics": "নিরাপত্তা বিশ্লেষণ",
+"ppeCompliance": "পিপিই সম্মতি",
+"shiftManagement": "শিফট ব্যবস্থাপনা"
+}
